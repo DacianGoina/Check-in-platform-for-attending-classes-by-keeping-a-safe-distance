@@ -1,5 +1,7 @@
 package com.example.springbackend.model;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,7 +9,8 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "ID")
+    private Long id;
 
     @Column(name = "ROLE")
     @Enumerated(EnumType.STRING)
@@ -20,7 +23,7 @@ public class User {
     private String lastName;
 
     @Column(name = "YEAR")
-    private int year;
+    private Integer year;
 
     @Column(name = "DEPARTMENT")
     private String department;
@@ -29,7 +32,7 @@ public class User {
 
     }
 
-    public User(long id, Role role, String firstName, String lastName, int year, String department) {
+    public User(Long id, Role role, String firstName, String lastName, Integer year, String department) {
         this.id = id;
         this.role = role;
         this.firstName = firstName;
@@ -52,7 +55,7 @@ public class User {
     }
 
     // Getters
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -68,7 +71,7 @@ public class User {
         return lastName;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
@@ -78,6 +81,11 @@ public class User {
 
 
     // Setters
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setRole(Role role) {
         this.role = role;
     }
@@ -90,7 +98,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
