@@ -22,20 +22,16 @@ public class Class {
     @Column(name = "SECTION")
     private String section;
 
-    @Column(name = "OCCUPIED_SEATS")
-    private Integer occupied_seats;
-
     public Class(){
 
     }
 
-    public Class(Long id, Long teacherId, String name, Integer year, String section, Integer occupied_seats) {
+    public Class(Long id, Long teacherId, String name, Integer year, String section) {
         this.id = id;
         this.teacherId = teacherId;
         this.name = name;
         this.year = year;
         this.section = section;
-        this.occupied_seats = occupied_seats;
     }
 
     @Override
@@ -46,7 +42,6 @@ public class Class {
                 ", name='" + name + '\'' +
                 ", year=" + year +
                 ", section='" + section + '\'' +
-                ", occupied_seats=" + occupied_seats +
                 '}';
     }
 
@@ -72,10 +67,6 @@ public class Class {
         return section;
     }
 
-    public Integer getOccupied_seats() {
-        return occupied_seats;
-    }
-
     // Setters
     public void setId(Long id) {
         this.id = id;
@@ -97,7 +88,4 @@ public class Class {
         this.section = section;
     }
 
-    public void setOccupied_seats(Integer occupied_seats) {
-        this.occupied_seats = occupied_seats;
-    }
 }
