@@ -22,4 +22,13 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
     //@Query("SELECT new de.smarterco.example.dto.UserNameDTO(u.id, u.name) FROM User u WHERE u.name = :name")
     List<ClassDTO> retrieveClassAsDTO();
 
+
+    /*
+    select P.id, P.classroom_id, P.class_id, P.starttime, P.endtime, P.data,
+    C.NAME AS "COURSE_NAME" ,CL.NAME AS "ROOM_NAME", U.LASTNAME, CL.CAPACITY
+    FROM PLANNERS P INNER JOIN CLASSROOMS CL ON CL.ID = P.CLASSROOM_ID
+    INNER JOIN CLASSES C ON C.ID = P.CLASS_ID
+    INNER JOIN USERS2 U ON C.TEACHER_ID = U.ID
+     */
+
 }
