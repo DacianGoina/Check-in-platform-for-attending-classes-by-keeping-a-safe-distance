@@ -1,7 +1,7 @@
 package com.example.springbackend.controller;
 
 import com.example.springbackend.dto.ClassDTO;
-import com.example.springbackend.repository.ClassRepository;
+import com.example.springbackend.repository.ClassEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("")
 public class ClassDTOController {
     @Autowired
-    private ClassRepository classRepo;
+    private ClassEntityRepository classRepo;
 
     @GetMapping("/classdto")
     @Transactional

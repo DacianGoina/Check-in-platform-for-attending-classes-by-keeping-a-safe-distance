@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "CLASSES")
-public class Class {
+public class ClassEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID", nullable = false, updatable = false)
@@ -22,11 +22,11 @@ public class Class {
     @Column(name = "SECTION")
     private String section;
 
-    public Class(){
+    public ClassEntity(){
 
     }
 
-    public Class(Long id, Long teacherId, String name, Integer year, String section) {
+    public ClassEntity(Long id, Long teacherId, String name, Integer year, String section) {
         this.id = id;
         this.teacherId = teacherId;
         this.name = name;
