@@ -1,8 +1,9 @@
 package com.example.springbackend.dto;
 
+
+
 import java.sql.Date;
 import java.sql.Time;
-
 public class ClassDTO {
     private Long id;
     private Long classroomId;
@@ -13,12 +14,11 @@ public class ClassDTO {
     private String courseName;
     private String roomName;
     private String teacherLastName;
-    //private Integer occupiedSeats;
     private Integer capacity;
 
-    public ClassDTO(){
+    /*public ClassDTO(){
 
-    }
+    }*/
 
     public ClassDTO(Long id, Long classroomId, Long classId, Time startTime, Time endTime, Date data, String courseName, String roomName, String teacherLastName, Integer capacity) {
         this.id = id;
