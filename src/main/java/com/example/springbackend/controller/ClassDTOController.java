@@ -1,7 +1,7 @@
 package com.example.springbackend.controller;
 
-import com.example.springbackend.dto.ClassDetails;
-import com.example.springbackend.repository.ClassDetailsRepository;
+import com.example.springbackend.dto.ClassDTO;
+import com.example.springbackend.repository.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +14,13 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("")
-public class ClassDetailsController {
+public class ClassDTOController {
     @Autowired
-    private ClassDetailsRepository cdRepo;
+    private ClassRepository classRepo;
 
-    @GetMapping("/cd")
+    @GetMapping("/classdto")
     @Transactional
-    public List<ClassDetails> getAll(){
-        return cdRepo.findAll();
+    public List<ClassDTO> getAllClassDTO(){
+        return classRepo.retrieveClassAsDTO();
     }
-
 }
