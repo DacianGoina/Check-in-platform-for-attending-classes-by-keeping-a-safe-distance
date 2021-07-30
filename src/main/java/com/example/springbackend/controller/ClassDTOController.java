@@ -18,9 +18,21 @@ public class ClassDTOController {
     @Autowired
     private ClassEntityRepository classRepo;
 
+
     @GetMapping("/classdto")
     @Transactional
-    public List<ClassDTO> getAllClassDTO(){
+    public List<ClassEntityRepository.ClassDTO> getAllClassDTO(){
         return classRepo.retrieveClassAsDTO();
     }
+
+    /*
+    @GetMapping("/classdto")
+    @Transactional
+    public List<ClassEntityRepository.ClassDTO> getAllClassDTO(){
+        List<ClassEntityRepository.ClassDTO> rez = classRepo.retrieveClassAsDTO();
+        for(ClassEntityRepository.ClassDTO i : rez)
+            System.out.println(i.toString());
+        return classRepo.retrieveClassAsDTO();
+    }
+     */
 }

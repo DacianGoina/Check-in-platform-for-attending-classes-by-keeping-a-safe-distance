@@ -10,7 +10,7 @@ public class ClassDTO {
     private Long classId;
     private Time startTime;
     private Time endTime;
-    private Date data;
+    private Date date;
     private String courseName;
     private String roomName;
     private String teacherLastName;
@@ -20,13 +20,13 @@ public class ClassDTO {
 
     }*/
 
-    public ClassDTO(Long id, Long classroomId, Long classId, Time startTime, Time endTime, Date data, String courseName, String roomName, String teacherLastName, Integer capacity) {
+    public ClassDTO(Long id, Long classroomId, Long classId, Time startTime, Time endTime, Date date, String courseName, String roomName, String teacherLastName, Integer capacity) {
         this.id = id;
         this.classroomId = classroomId;
         this.classId = classId;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.data = data;
+        this.date = date;
         this.courseName = courseName;
         this.roomName = roomName;
         this.teacherLastName = teacherLastName;
@@ -73,12 +73,12 @@ public class ClassDTO {
         this.endTime = endTime;
     }
 
-    public Date getData() {
-        return data;
+    public Date getDate() {
+        return date;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getCourseName() {

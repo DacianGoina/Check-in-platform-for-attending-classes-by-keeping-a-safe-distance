@@ -7,11 +7,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 //@Repository
 public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> {
 
     List<ClassEntity> findAll();
+
+
+
+    // AICI E PARTEA CU NATIVE QUERY CARE NU RETURNEAZA IN ORDINE
+    //--------------------------------------------
 
     @Query(value = "select P.id AS \"id\" , P.classroom_id AS \"classroomId\", P.class_id AS \"classId\", " +
             "P.starttime AS \"startTime\", P.endtime AS \"endTime\", P.data AS \"data\", " +
@@ -21,6 +28,21 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
             "INNER JOIN USERS2 U ON C.TEACHER_ID = U.ID", nativeQuery = true)
     List<ClassDTO> retrieveClassAsDTO();
 
+
+    public static interface ClassDTO {
+        Long getId();
+        Long getClassroomId();
+        Long getClassId();
+        Time getStartTime();
+        Time getEndTime();
+        Date getData();
+        String getCourseName();
+        String getRoomName();
+        String getTeacherLastName();
+        Integer getCapacity();
+    }
+
+    //-------------------------------------------------------------------
 
     /*
     @Query(value = "SELECT new com.example.springbackend.dto.ClassDTO" +
