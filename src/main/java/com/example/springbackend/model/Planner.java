@@ -4,6 +4,7 @@ package com.example.springbackend.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "PLANNERS")
@@ -19,25 +20,22 @@ public class Planner {
     private Long classId;
 
     @Column(name = "STARTTIME")
-    private Time startTime;
+    private Timestamp startDate;
 
     @Column(name = "ENDTIME")
-    private Time endTime;
+    private Timestamp endDate;
 
-    @Column(name = "DATA")
-    private Date date;
 
     public Planner(){
 
     }
 
-    public Planner(Long id, Long classroomId, Long classId, Time startTime, Time endTime, Date date) {
+    public Planner(Long id, Long classroomId, Long classId, Timestamp startTime, Timestamp endTime) {
         this.id = id;
         this.classroomId = classroomId;
         this.classId = classId;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.date = date;
+        this.startDate = startTime;
+        this.endDate = endDate;
     }
 
     public Long getId() {
@@ -64,27 +62,21 @@ public class Planner {
         this.classId = classId;
     }
 
-    public Time getStartTime() {
-        return startTime;
+    public Timestamp getStartDate() {
+        return startDate;
     }
 
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
     }
 
-    public Time getEndTime() {
-        return endTime;
+    public Timestamp getEndDate() {
+        return endDate;
     }
 
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
+    public void setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 }

@@ -4,13 +4,14 @@ package com.example.springbackend.dto;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
+
 public class ClassDTO {
     private Long id;
     private Long classroomId;
     private Long classId;
-    private Time startTime;
-    private Time endTime;
-    private Date date;
+    private Timestamp startDate;
+    private Timestamp endDate;
     private String courseName;
     private String roomName;
     private String teacherLastName;
@@ -20,13 +21,12 @@ public class ClassDTO {
 
     }*/
 
-    public ClassDTO(Long id, Long classroomId, Long classId, Time startTime, Time endTime, Date date, String courseName, String roomName, String teacherLastName, Integer capacity) {
+    public ClassDTO(Long id, Long classroomId, Long classId, Timestamp startDate, Timestamp endDate,  String courseName, String roomName, String teacherLastName, Integer capacity) {
         this.id = id;
         this.classroomId = classroomId;
         this.classId = classId;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.date = date;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.courseName = courseName;
         this.roomName = roomName;
         this.teacherLastName = teacherLastName;
@@ -57,28 +57,20 @@ public class ClassDTO {
         this.classId = classId;
     }
 
-    public Time getStartTime() {
-        return startTime;
+    public Timestamp getStartDate() {
+        return startDate;
     }
 
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
     }
 
-    public Time getEndTime() {
-        return endTime;
+    public Timestamp getEndDate() {
+        return endDate;
     }
 
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public void setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
     }
 
     public String getCourseName() {

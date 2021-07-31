@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.List;
 //@Repository
 public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> {
@@ -21,7 +22,7 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
     //--------------------------------------------
 
     @Query(value = "select P.id AS \"id\" , P.classroom_id AS \"classroomId\", P.class_id AS \"classId\", " +
-            "P.starttime AS \"startTime\", P.endtime AS \"endTime\", P.data AS \"data\", " +
+            "P.start_Date AS \"startDate\", P.end_Date AS \"endDate\", " +
             "C.NAME AS \"courseName\" ,CL.NAME AS \"roomName\", U.LASTNAME AS \"teacherLastName\", " +
             "CL.CAPACITY AS \"capacity\" FROM PLANNERS P INNER JOIN CLASSROOMS CL ON CL.ID = P.CLASSROOM_ID " +
             "INNER JOIN CLASSES C ON C.ID = P.CLASS_ID " +
@@ -33,9 +34,8 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
         Long getId();
         Long getClassroomId();
         Long getClassId();
-        Time getStartTime();
-        Time getEndTime();
-        Date getData();
+        Timestamp getStartDate();
+        Timestamp getEndDate();
         String getCourseName();
         String getRoomName();
         String getTeacherLastName();
