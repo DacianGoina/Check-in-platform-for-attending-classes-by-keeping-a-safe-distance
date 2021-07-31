@@ -42,6 +42,21 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
         Integer getCapacity();
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //-------------------------------------------------------------------
 
     /*
