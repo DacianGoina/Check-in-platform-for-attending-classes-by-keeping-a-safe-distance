@@ -17,7 +17,7 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
 
 
 
-    // AICI E PARTEA CU NATIVE QUERY CARE NU RETURNEAZA IN ORDINE
+    // AICI E PARTEA CU NATIVE QUERY
     //--------------------------------------------
 
     @Query(value = "select P.id AS \"id\" , P.classroom_id AS \"classroomId\", P.class_id AS \"classId\", " +
