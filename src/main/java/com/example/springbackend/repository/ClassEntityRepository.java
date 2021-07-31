@@ -18,6 +18,7 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
 
 
 
+
     // AICI E PARTEA CU NATIVE QUERY
     //--------------------------------------------
 
