@@ -6,45 +6,36 @@ import java.io.Serializable;
 @Entity
 //@IdClass(CompositeKey.class)
 @Table(name = "REPARTITION")
-public class Repartition implements Serializable{
-
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "STUDENT_ID", nullable = false, updatable = false)
-    private Long studentId;
+public class Repartition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CLASS_ID", nullable = false, updatable = false)
-    private Long classId;
-    */
+    @Column(name = "ID", nullable = false, updatable = false)
+    private Long Id;
 
-    @EmbeddedId
-    private CompositeKey key;
+    @Column(name = "STUDENT_ID", nullable = false, updatable = false)
+    private Long studentId;
 
-    public Repartition(){
+    @Column(name = "PLANNER_ID", nullable = false, updatable = false)
+    private Long plannerId;
+
+    public Repartition() {
 
     }
 
-    public CompositeKey getKey() {
-        return this.key;
-    }
-
-    public void setKey(CompositeKey newKey){
-        this.key = newKey;
-    }
-
-    /*
-    public Repartition(Long studentId, Long classId) {
+    public Repartition(Long Id, Long studentId, Long plannerId) {
+        this.Id = Id;
         this.studentId = studentId;
-        this.classId = classId;
+        this.plannerId = plannerId;
     }
+
 
     @Override
     public String toString() {
         return "Repartition{" +
+                "Id" + Id +
                 "studentId=" + studentId +
-                ", classId=" + classId +
+                ", classId=" + plannerId +
                 '}';
     }
 
@@ -52,17 +43,23 @@ public class Repartition implements Serializable{
         return studentId;
     }
 
-    public Long getClassId() {
-        return classId;
+    public Long getId() {
+        return Id;
+    }
+
+    public Long getPlannerId() {
+        return plannerId;
     }
 
     public void setStudentId(Long studentId) {
         this.studentId = studentId;
     }
 
-    public void setClassId(Long classId) {
-        this.classId = classId;
+    public void setId(Long id) {
+        Id = id;
     }
 
-     */
+    public void setPlannerId(Long plannerId) {
+        this.plannerId = plannerId;
+    }
 }
