@@ -40,6 +40,12 @@ public class ClassDTOController {
         return classRepo.getClassDTOById(id);
     }
 
+
+    @GetMapping("/course-names")
+    @Transactional
+    public List<String> getCourseNames(){
+        return classRepo.getAllCourseNames();
+    }
     /*
     @GetMapping("/classdto")
     @Transactional
