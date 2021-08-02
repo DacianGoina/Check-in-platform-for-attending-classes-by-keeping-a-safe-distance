@@ -39,6 +39,10 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
             "INNER JOIN USERS2 U ON C.TEACHER_ID = U.ID WHERE P.id = :pid", nativeQuery = true)
     public ClassDTO getClassDTOById(@Param("pid") Long id);
 
+
+    @Query(value = "SELECT NAME AS \"courseName\" FROM CLASSES ", nativeQuery = true)
+    public List<String> getAllCourseNames();
+
     public static interface ClassDTO {
         Long getId();
         Long getClassroomId();

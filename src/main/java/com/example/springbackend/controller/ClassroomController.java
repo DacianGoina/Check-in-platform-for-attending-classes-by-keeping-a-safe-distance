@@ -29,4 +29,10 @@ public class ClassroomController {
         return clRepo.findById(id).get();
     }
 
+
+    @GetMapping("/room-names")
+    @Transactional
+    public List<String> getRoomNames(){
+        return clRepo.getAllRoomNames();
+    }
 }
