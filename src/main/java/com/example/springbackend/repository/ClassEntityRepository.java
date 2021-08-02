@@ -46,6 +46,16 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
     public ClassEntity findByName(String courseName);
 
 
+    @Query(value = "select P.id AS \"id\" , P.classroom_id AS \"classroomId\", P.class_id AS \"classId\", " +
+            "P.start_date AS \"startDate\", P.end_date AS \"endDate\", C.NAME AS \"courseName\" ," +
+            "CL.NAME AS \"roomName\", U.FIRSTNAME AS \"teacherFirstName\", U.LASTNAME AS \"teacherLastName\", " +
+            "count(*) AS \"studentNumber\", CL.CAPACITY AS \"capacity\" FROM PLANNERS P " +
+            "INNER JOIN CLASSROOMS CL ON CL.ID = P.CLASSROOM_ID " +
+            "INNER JOIN CLASSES C ON C.ID = P.CLASS_ID " +
+            "INNER JOIN USERS2 U ON C.TEACHER_ID = U.ID " +
+            "INNER JOIN REPARTITION R ON P.id = R.planner_id GROUP BY planner_id", nativeQuery = true)
+    public List<ClassEntityRepository.ClassDTO> getAllClassDTO();
+
     public static interface ClassDTO {
         Long getId();
         Long getClassroomId();
@@ -56,7 +66,9 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
         String getRoomName();
         String getTeacherFirstName();
         String getTeacherLastName();
+        Integer getStudentNumber();
         Integer getCapacity();
+
     }
 
 

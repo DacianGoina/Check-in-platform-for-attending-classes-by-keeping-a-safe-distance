@@ -34,7 +34,7 @@ public class ClassDTOController {
     @GetMapping("/classdto")
     @Transactional
     public List<ClassEntityRepository.ClassDTO> getAllClassDTO(){
-        return classRepo.retrieveClassAsDTO();
+        return classRepo.getAllClassDTO();
     }
 
     @GetMapping("/classdto/{id}")
