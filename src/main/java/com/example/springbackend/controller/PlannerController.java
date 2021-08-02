@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PlannerController {
     @Autowired
     private PlannerRepository plannerRepo;
