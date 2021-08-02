@@ -34,6 +34,12 @@ public class ClassDTOController {
         return classRepo.retrieveClassAsDTO();
     }
 
+    @GetMapping("/classdto/{id}")
+    @Transactional
+    public ClassEntityRepository.ClassDTO getClassDTOById(@PathVariable("id") Long id){
+        return classRepo.getClassDTOById(id);
+    }
+
     /*
     @GetMapping("/classdto")
     @Transactional

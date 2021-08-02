@@ -5,6 +5,7 @@ import com.example.springbackend.dto.ClassDTO;
 import com.example.springbackend.model.ClassEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
@@ -30,6 +31,13 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
             "INNER JOIN USERS2 U ON C.TEACHER_ID = U.ID", nativeQuery = true)
     List<ClassDTO> retrieveClassAsDTO();
 
+    @Query(value = "select P.id AS \"id\" , P.classroom_id AS \"classroomId\", P.class_id AS \"classId\", " +
+            "P.start_Date AS \"startDate\", P.end_Date AS \"endDate\", " +
+            "C.NAME AS \"courseName\" ,CL.NAME AS \"roomName\", U.FIRSTNAME AS \"teacherFirstName\", U.LASTNAME AS \"teacherLastName\", " +
+            "CL.CAPACITY AS \"capacity\" FROM PLANNERS P INNER JOIN CLASSROOMS CL ON CL.ID = P.CLASSROOM_ID " +
+            "INNER JOIN CLASSES C ON C.ID = P.CLASS_ID " +
+            "INNER JOIN USERS2 U ON C.TEACHER_ID = U.ID WHERE P.id = :pid", nativeQuery = true)
+    public ClassDTO getClassDTOById(@Param("pid") Long id);
 
     public static interface ClassDTO {
         Long getId();
