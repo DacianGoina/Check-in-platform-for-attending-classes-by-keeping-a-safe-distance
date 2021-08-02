@@ -25,9 +25,9 @@ public class SpringBackendApplication {
 
         // am testat baza de date
         /*try {
-            Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "dacianG", "finalbijection@");
+            Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
             Statement st = conn.createStatement();
-            ResultSet rez = st.executeQuery("SELECT * FROM USERS");
+            ResultSet rez = st.executeQuery("SELECT * FROM USERS2");
             System.out.println("am reusit!");
             while(rez.next()){
                 System.out.println(rez.getString(1) + " " + rez.getString(3));
