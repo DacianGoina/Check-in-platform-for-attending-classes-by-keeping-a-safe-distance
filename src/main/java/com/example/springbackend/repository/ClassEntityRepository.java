@@ -24,7 +24,7 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
 
     @Query(value = "select P.id AS \"id\" , P.classroom_id AS \"classroomId\", P.class_id AS \"classId\", " +
             "P.start_Date AS \"startDate\", P.end_Date AS \"endDate\", " +
-            "C.NAME AS \"courseName\" ,CL.NAME AS \"roomName\", U.LASTNAME AS \"teacherLastName\", " +
+            "C.NAME AS \"courseName\" ,CL.NAME AS \"roomName\", U.FIRSTNAME AS \"teacherFirstName\", U.LASTNAME AS \"teacherLastName\", " +
             "CL.CAPACITY AS \"capacity\" FROM PLANNERS P INNER JOIN CLASSROOMS CL ON CL.ID = P.CLASSROOM_ID " +
             "INNER JOIN CLASSES C ON C.ID = P.CLASS_ID " +
             "INNER JOIN USERS2 U ON C.TEACHER_ID = U.ID", nativeQuery = true)
@@ -39,6 +39,7 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
         Timestamp getEndDate();
         String getCourseName();
         String getRoomName();
+        String getTeacherFirstName();
         String getTeacherLastName();
         Integer getCapacity();
     }
