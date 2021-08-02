@@ -39,12 +39,20 @@ public class Repartition {
                 '}';
     }
 
-    public Long getStudentId() {
-        return studentId;
+    public void setId(Long id) {
+        Id = id;
     }
 
     public Long getId() {
         return Id;
+    }
+
+    public void setPlannerId(Long plannerId) {
+        this.plannerId = plannerId;
+    }
+
+    public Long getStudentId() {
+        return studentId;
     }
 
     public Long getPlannerId() {
@@ -55,11 +63,5 @@ public class Repartition {
         this.studentId = studentId;
     }
 
-    public void setId(Long id) {
-        Id = id;
-    }
 
-    public void setPlannerId(Long plannerId) {
-        this.plannerId = plannerId;
-    }
 }
