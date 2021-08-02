@@ -16,7 +16,7 @@ public class Planner {
     @Column(name = "CLASSROOM_ID")
     private Long classroomId;
 
-    @Column(name = "CLASS_ID", nullable = false, updatable = false)
+    @Column(name = "CLASS_ID")
     private Long classId;
 
     @Column(name = "STARTTIME")

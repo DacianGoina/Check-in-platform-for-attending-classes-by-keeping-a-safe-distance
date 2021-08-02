@@ -43,6 +43,9 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
     @Query(value = "SELECT NAME AS \"courseName\" FROM CLASSES ", nativeQuery = true)
     public List<String> getAllCourseNames();
 
+    public ClassEntity findByName(String courseName);
+
+
     public static interface ClassDTO {
         Long getId();
         Long getClassroomId();

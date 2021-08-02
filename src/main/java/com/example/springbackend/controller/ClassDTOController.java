@@ -2,7 +2,9 @@ package com.example.springbackend.controller;
 
 import com.example.springbackend.dto.ClassDTO;
 import com.example.springbackend.model.ClassEntity;
+import com.example.springbackend.model.Classroom;
 import com.example.springbackend.repository.ClassEntityRepository;
+import com.example.springbackend.repository.ClassroomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ import java.util.List;
 public class ClassDTOController {
     @Autowired
     private ClassEntityRepository classRepo;
+
 
     @GetMapping("/classes")
     @Transactional
@@ -46,6 +49,14 @@ public class ClassDTOController {
     public List<String> getCourseNames(){
         return classRepo.getAllCourseNames();
     }
+
+    @GetMapping("/cname/{name}")
+    @Transactional
+    public ClassEntity getClassEntityByName(@PathVariable("name") String courseName){
+        return classRepo.findByName(courseName);
+    }
+
+
     /*
     @GetMapping("/classdto")
     @Transactional

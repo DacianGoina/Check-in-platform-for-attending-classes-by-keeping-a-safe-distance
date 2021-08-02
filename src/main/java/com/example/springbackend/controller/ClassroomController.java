@@ -35,4 +35,18 @@ public class ClassroomController {
     public List<String> getRoomNames(){
         return clRepo.getAllRoomNames();
     }
+
+
+    @GetMapping("/findByCapacity/{capacity}")
+    @Transactional
+    public List<Classroom> getClassroomByCapacity(@PathVariable("capacity") Integer capacity){
+        return clRepo.findAllByCapacity(capacity);
+    }
+
+    @GetMapping("/clname/{name}")
+    @Transactional
+    public Classroom getClassroomByName(@PathVariable("name") String roomName){
+        return clRepo.findByName(roomName);
+    }
+
 }

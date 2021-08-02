@@ -12,4 +12,8 @@ public interface ClassroomRepository extends JpaRepository<Classroom, Long> {
 
     @Query(value = "SELECT NAME AS \"roomName\" FROM CLASSROOMS", nativeQuery = true)
     public List<String> getAllRoomNames();
+
+    public List<Classroom> findAllByCapacity(Integer capacity);
+
+    public Classroom findByName(String roomName);
 }
