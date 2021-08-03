@@ -1,5 +1,6 @@
 package com.example.springbackend.controller;
 
+import com.example.springbackend.dto.ClassDTO;
 import com.example.springbackend.model.Classroom;
 import com.example.springbackend.model.Planner;
 import com.example.springbackend.model.User;
@@ -37,18 +38,23 @@ public class PlannerController {
     // dupa ce am gasit aceste doua entitati le iau ID-urile si le setez in obiectul Planner (linia de tabel)
     //   care va fi actualizata
     @PutMapping("/class/{id}")
-    public Planner updatePlanner(@PathVariable("id") Long id, @RequestBody ClassEntityRepository.ClassDTO plannerDetails){
+    public Planner updatePlanner(@PathVariable("id") Long id, @RequestBody ClassDTO newPlanner){
+        System.out.println("am intrat in PUT");
+        //System.out.println("Id id:" + id + " | " + "DTO id: " + newPlanner.getId());
         //Classroom classroom = clRepo.findById(plannerDetails.getClassroomId()).get();
-        Long newClassroomId = clRepo.findByName(plannerDetails.getRoomName()).getId();
-        Long newClassId = classRepo.findByName(plannerDetails.getCourseName()).getId();
+        Long newClassroomId = clRepo.findByName(newPlanner.getRoomName()).getId();
+        Long newClassId = classRepo.findByName(newPlanner.getCourseName()).getId();
 
-        Planner obj = plannerRepo.findById(id).get();
+        System.out.println(newPlanner.toString());
+        Planner obj = plannerRepo.findById(newPlanner.getId()).get();
         obj.setClassId(newClassId);
         obj.setClassroomId(newClassroomId);
-        obj.setStartDate(plannerDetails.getStartDate());
-        obj.setEndDate(plannerDetails.getEndDate());
+        obj.setStartDate(newPlanner.getStartDate());
+        obj.setEndDate(newPlanner.getEndDate());
         // acum trebuie gasita cursul coresp si numele salii
         //Planner resObj = plannerRepo.save(obj);
+        System.out.println(obj.toString());
+        System.out.println("acum urmeaza sa fac return");
         return plannerRepo.save(obj);
     }
 }

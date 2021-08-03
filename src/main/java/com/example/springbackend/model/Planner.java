@@ -19,12 +19,23 @@ public class Planner {
     @Column(name = "CLASS_ID")
     private Long classId;
 
-    @Column(name = "STARTTIME")
+    @Column(name = "START_DATE")
     private Timestamp startDate;
 
-    @Column(name = "ENDTIME")
+    @Column(name = "END_DATE")
     private Timestamp endDate;
 
+
+    @Override
+    public String toString() {
+        return "Planner{" +
+                "id=" + id +
+                ", classroomId=" + classroomId +
+                ", classId=" + classId +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
+    }
 
     public Planner(){
 
