@@ -40,7 +40,7 @@ public class PlannerController {
     @PutMapping("/class/{id}")
     public Planner updatePlanner(@PathVariable("id") Long id, @RequestBody ClassDTO newPlanner){
         System.out.println("am intrat in PUT");
-        //System.out.println("Id id:" + id + " | " + "DTO id: " + newPlanner.getId());
+
         //Classroom classroom = clRepo.findById(plannerDetails.getClassroomId()).get();
         Long newClassroomId = clRepo.findByName(newPlanner.getRoomName()).getId();
         Long newClassId = classRepo.findByName(newPlanner.getCourseName()).getId();
