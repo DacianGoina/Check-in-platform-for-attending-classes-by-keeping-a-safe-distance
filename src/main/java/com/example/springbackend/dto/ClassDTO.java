@@ -23,6 +23,24 @@ public class ClassDTO {
 
     }*/
 
+
+    @Override
+    public String toString() {
+        return "ClassDTO{" +
+                "id=" + id +
+                ", classroomId=" + classroomId +
+                ", classId=" + classId +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", courseName='" + courseName + '\'' +
+                ", roomName='" + roomName + '\'' +
+                ", teacherFirstName='" + teacherFirstName + '\'' +
+                ", teacherLastName='" + teacherLastName + '\'' +
+                ", studentsNumber=" + studentsNumber +
+                ", capacity=" + capacity +
+                '}';
+    }
+
     public ClassDTO(Long id, Long classroomId, Long classId, Timestamp startDate, Timestamp endDate, String courseName, String roomName, String teacherFirstName, String teacherLastName, Integer studentsNumber, Integer capacity) {
         this.id = id;
         this.classroomId = classroomId;
