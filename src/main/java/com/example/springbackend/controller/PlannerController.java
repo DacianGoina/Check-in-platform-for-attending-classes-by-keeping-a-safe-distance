@@ -4,16 +4,16 @@ import com.example.springbackend.dto.ClassDTO;
 import com.example.springbackend.model.Classroom;
 import com.example.springbackend.model.Planner;
 import com.example.springbackend.model.User;
-import com.example.springbackend.repository.ClassEntityRepository;
-import com.example.springbackend.repository.ClassroomRepository;
-import com.example.springbackend.repository.PlannerRepository;
-import com.example.springbackend.repository.UserRepository;
+import com.example.springbackend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("")
@@ -25,6 +25,8 @@ public class PlannerController {
     private ClassEntityRepository classRepo;
     @Autowired
     private ClassroomRepository clRepo;
+    @Autowired
+    private RepartitionRepository repRepo;
 
     @GetMapping("/planners")
     @Transactional
@@ -56,5 +58,19 @@ public class PlannerController {
         System.out.println(obj.toString());
         System.out.println("acum urmeaza sa fac return");
         return plannerRepo.save(obj);
+    }
+
+
+    @DeleteMapping("/class/{id}")
+    @Transactional
+    public ResponseEntity<Map<String,Boolean>> deletePlanner(@PathVariable("id") Long id){
+        // vezi ca trebuie sters in REPARTITION toate liniile care au acest id
+        repRepo.deleteRepartitionsByPlannerId(id);
+
+        plannerRepo.deleteById(id);
+        HashMap<String,Boolean> responsde = new HashMap<>();
+        responsde.put("deleted",Boolean.TRUE);
+        return ResponseEntity.ok(responsde);
+
     }
 }
