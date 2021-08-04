@@ -46,7 +46,7 @@ public class Planner {
         this.classroomId = classroomId;
         this.classId = classId;
         this.startDate = startTime;
-        this.endDate = endDate;
+        this.endDate = endTime;
     }
 
     public Long getId() {

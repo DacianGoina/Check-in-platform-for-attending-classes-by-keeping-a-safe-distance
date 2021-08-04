@@ -71,6 +71,18 @@ public class PlannerController {
         HashMap<String,Boolean> responsde = new HashMap<>();
         responsde.put("deleted",Boolean.TRUE);
         return ResponseEntity.ok(responsde);
+    }
 
+    @PostMapping("/addSchedule")
+    @Transactional
+    public Planner createPlanner(@RequestBody ClassDTO newPlanner){
+        System.out.println("am intrat in POST");
+        // sa creezi efectiv obiectul ca sa nu ramana gol
+        Long newClassroomId = clRepo.findByName(newPlanner.getRoomName()).getId();
+        Long newClassId = classRepo.findByName(newPlanner.getCourseName()).getId();
+        Planner a = new Planner(0L,newClassroomId,newClassId,newPlanner.getStartDate(),newPlanner.getEndDate());
+        System.out.println(a.toString());
+        System.out.println("Acum se salveaza");
+        return plannerRepo.save(a);
     }
 }
