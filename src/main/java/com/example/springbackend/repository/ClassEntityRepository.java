@@ -32,11 +32,12 @@ public interface ClassEntityRepository extends JpaRepository<ClassEntity, Long> 
     List<ClassDTO> retrieveClassAsDTO();
 
     @Query(value = "select P.id AS \"id\" , P.classroom_id AS \"classroomId\", P.class_id AS \"classId\", " +
-            "P.start_Date AS \"startDate\", P.end_Date AS \"endDate\", " +
-            "C.NAME AS \"courseName\" ,CL.NAME AS \"roomName\", U.FIRSTNAME AS \"teacherFirstName\", U.LASTNAME AS \"teacherLastName\", " +
-            "CL.CAPACITY AS \"capacity\" FROM PLANNERS P INNER JOIN CLASSROOMS CL ON CL.ID = P.CLASSROOM_ID " +
-            "INNER JOIN CLASSES C ON C.ID = P.CLASS_ID " +
-            "INNER JOIN USERS2 U ON C.TEACHER_ID = U.ID WHERE P.id = :pid", nativeQuery = true)
+            "P.start_date AS \"startDate\", P.end_date AS \"endDate\", C.NAME AS \"courseName\" ,CL.NAME AS \"roomName\", " +
+            "U.FIRSTNAME AS \"teacherFirstName\", U.LASTNAME AS \"teacherLastName\"," +
+            "NVL(count(student_id),0) AS \"studentsNumber\", CL.CAPACITY AS \"capacity\" FROM PLANNERS P " +
+            "INNER JOIN CLASSROOMS CL ON CL.ID = P.CLASSROOM_ID INNER JOIN CLASSES C ON C.ID = P.CLASS_ID " +
+            "INNER JOIN USERS2 U ON C.TEACHER_ID = U.ID LEFT JOIN REPARTITION R ON P.id = R.planner_id " + "" +
+            "WHERE P.ID = :pid GROUP BY P.ID;", nativeQuery = true)
     public ClassDTO getClassDTOById(@Param("pid") Long id);
 
 
