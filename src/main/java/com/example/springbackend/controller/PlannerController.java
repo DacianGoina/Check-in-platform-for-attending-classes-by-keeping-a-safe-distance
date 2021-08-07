@@ -61,7 +61,8 @@ public class PlannerController {
     }
 
 
-    @DeleteMapping("/class/{id}")
+
+    @DeleteMapping(value = "/class/{id}")
     @Transactional
     public ResponseEntity<Map<String,Boolean>> deletePlanner(@PathVariable("id") Long id){
         // vezi ca trebuie sters in REPARTITION toate liniile care au acest id
@@ -72,6 +73,8 @@ public class PlannerController {
         responsde.put("deleted",Boolean.TRUE);
         return ResponseEntity.ok(responsde);
     }
+
+
 
     @PostMapping("/addSchedule")
     @Transactional

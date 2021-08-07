@@ -36,7 +36,7 @@ public class RepartitionController {
     }
 
     // Repartizeaza un student intr-un anumit planner
-    @PostMapping("/class/{id}")
+    @PostMapping("/class/{id}/enroll")
     @Transactional
     public Repartition createRepartition(@RequestBody RepartitionDTO newRepartition){
         System.out.println("am intrat in POST");
@@ -47,12 +47,29 @@ public class RepartitionController {
     }
 
 
-    @DeleteMapping("/class/{plannerId}")
+
+    /*
+    @DeleteMapping(value = "/class/{id}/enroll")
     @Transactional
-    public ResponseEntity<Map<String,Boolean>> deleteRepartition(@PathVariable("plannerId") Long plannerId, Long studentId){
-        repartitionRepo.deleteRepartitionByPlannerIdAndStudentId(plannerId,studentId);
-        HashMap<String,Boolean> responsde = new HashMap<>();
-        responsde.put("deleted",Boolean.TRUE);
-        return ResponseEntity.ok(responsde);
+    public ResponseEntity<Map<String,Boolean>> deleteRepartition(@PathVariable("id") Long id, Long studentId){
+
+        System.out.println("Planner id: " + id + " Student id: " + studentId);
+        repartitionRepo.deleteRepartitionByPlannerIdAndStudentId(id,studentId);
+        HashMap<String,Boolean> response = new HashMap<>();
+        response.put("deleted",Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
+
+     */
+
+    @DeleteMapping(value = "/class/{id}/enroll")
+    @Transactional
+    public ResponseEntity<Map<String,Boolean>> deleteRepartition(RepartitionDTO repartition){
+
+        System.out.println("Planner id: " + repartition.getPlannerId() + " Student id: " + repartition.getStudentId());
+        repartitionRepo.deleteRepartitionByPlannerIdAndStudentId(repartition.getPlannerId(),repartition.getStudentId());
+        HashMap<String,Boolean> response = new HashMap<>();
+        response.put("deleted",Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }
