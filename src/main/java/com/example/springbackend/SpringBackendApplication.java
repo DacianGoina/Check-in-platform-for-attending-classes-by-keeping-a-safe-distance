@@ -20,9 +20,6 @@ public class SpringBackendApplication {
         SpringApplication.run(SpringBackendApplication.class, args);
         System.out.println("da");
 
-
-
-
         // am testat baza de date
         /*try {
             Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");

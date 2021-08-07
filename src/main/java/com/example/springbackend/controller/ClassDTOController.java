@@ -3,6 +3,7 @@ package com.example.springbackend.controller;
 import com.example.springbackend.dto.ClassDTO;
 import com.example.springbackend.model.ClassEntity;
 import com.example.springbackend.model.Classroom;
+import com.example.springbackend.model.Planner;
 import com.example.springbackend.repository.ClassEntityRepository;
 import com.example.springbackend.repository.ClassroomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,18 +57,16 @@ public class ClassDTOController {
         return classRepo.findByName(courseName);
     }
 
-
-
-
-
-    /*
-    @GetMapping("/classdto")
+    @PostMapping("/createClass")
     @Transactional
-    public List<ClassEntityRepository.ClassDTO> getAllClassDTO(){
-        List<ClassEntityRepository.ClassDTO> rez = classRepo.retrieveClassAsDTO();
-        for(ClassEntityRepository.ClassDTO i : rez)
-            System.out.println(i.toString());
-        return classRepo.retrieveClassAsDTO();
+    public ClassEntity createClasEntity(@RequestBody ClassEntity newClassEntity){
+        System.out.println("am intrat in POST");
+        // sa creezi efectiv obiectul ca sa nu ramana gol
+        ClassEntity a = new ClassEntity(0L, newClassEntity.getTeacherId(), newClassEntity.getName(), newClassEntity.getYear(), newClassEntity.getSection());
+        System.out.println(a.toString());
+        System.out.println("Acum se salveaza");
+        return classRepo.save(a);
     }
-     */
+
+
 }

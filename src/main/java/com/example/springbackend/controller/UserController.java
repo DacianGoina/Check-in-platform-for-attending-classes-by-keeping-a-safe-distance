@@ -44,6 +44,10 @@ public class UserController {
 
 
 
+    @GetMapping("/teacherDTO")
+    public List<UserRepository.TeacherDTO> getAllTeacherDTO(){
+        return userRepo.getAllTeacherDTO();
+    }
 
 
 }
