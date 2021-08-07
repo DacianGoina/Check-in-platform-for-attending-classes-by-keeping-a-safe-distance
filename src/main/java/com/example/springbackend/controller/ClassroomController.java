@@ -55,4 +55,16 @@ public class ClassroomController {
     public List<ClassroomRepository.ClassroomDetails> getAllDetails(){
         return clRepo.getClassroomsDetails();
     }
+
+    @PostMapping("/createClassroom")
+    @Transactional
+    public Classroom createClassroom(@RequestBody Classroom newClassroom){
+        System.out.println("am intrat in POST");
+        // sa creezi efectiv obiectul ca sa nu ramana gol
+        Classroom a = new Classroom(0L, newClassroom.getName(), newClassroom.getLocation(), newClassroom.getCapacity());
+        System.out.println(a.toString());
+        System.out.println("Acum se salveaza");
+        return clRepo.save(a);
+    }
+
 }

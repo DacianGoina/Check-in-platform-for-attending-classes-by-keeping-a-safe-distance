@@ -59,7 +59,7 @@ public class ClassDTOController {
 
     @PostMapping("/createClass")
     @Transactional
-    public ClassEntity createClasEntity(@RequestBody ClassEntity newClassEntity){
+    public ClassEntity createClassEntity(@RequestBody ClassEntity newClassEntity){
         System.out.println("am intrat in POST");
         // sa creezi efectiv obiectul ca sa nu ramana gol
         ClassEntity a = new ClassEntity(0L, newClassEntity.getTeacherId(), newClassEntity.getName(), newClassEntity.getYear(), newClassEntity.getSection());
