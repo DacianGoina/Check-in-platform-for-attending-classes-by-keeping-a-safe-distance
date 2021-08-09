@@ -48,20 +48,6 @@ public class RepartitionController {
 
 
 
-    /*
-    @DeleteMapping(value = "/class/{id}/enroll")
-    @Transactional
-    public ResponseEntity<Map<String,Boolean>> deleteRepartition(@PathVariable("id") Long id, Long studentId){
-
-        System.out.println("Planner id: " + id + " Student id: " + studentId);
-        repartitionRepo.deleteRepartitionByPlannerIdAndStudentId(id,studentId);
-        HashMap<String,Boolean> response = new HashMap<>();
-        response.put("deleted",Boolean.TRUE);
-        return ResponseEntity.ok(response);
-    }
-
-     */
-
     @DeleteMapping(value = "/class/{id}/enroll/{studentId}")
     @Transactional
     public ResponseEntity<Map<String,Boolean>> deleteRepartition(@PathVariable("id") Long id, @PathVariable("studentId") Long studentId){

@@ -49,5 +49,12 @@ public class UserController {
         return userRepo.getAllTeacherDTO();
     }
 
+    // Get students by planner Id
+    @GetMapping("/students/{plannerId}")
+    @Transactional
+    public List<User> getStudentsByPlannerId(@PathVariable("plannerId") Long pid){
+        return userRepo.getStudentsByPlannerId(pid);
+    }
+
 
 }
