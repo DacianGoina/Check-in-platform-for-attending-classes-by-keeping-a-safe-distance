@@ -36,7 +36,7 @@ public class RepartitionController {
     }
 
     // Repartizeaza un student intr-un anumit planner
-    @PostMapping("/class/{id}/enroll")
+    @PostMapping("/class/{id}/enroll/{studentId}")
     @Transactional
     public Repartition createRepartition(@RequestBody RepartitionDTO newRepartition){
         System.out.println("am intrat in POST");
